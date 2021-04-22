@@ -168,7 +168,9 @@ namespace Clases
 
             public static void MostrarAgenda()
             {
-              
+                Console.WriteLine($"Carpeta Actual '{Environment.CurrentDirectory}'");
+                path = Environment.CurrentDirectory+"/Agenda.txt";
+
                 persona.RemoveRange(0,persona.Count);
                 
                 // This text is added only once to the file.
@@ -431,7 +433,8 @@ namespace Clases
                         break;
 
                     default:
-                        //Console.WriteLine("Default case");
+                        MostrarAgenda();
+                        Menu();
                         break;
                 }
 
