@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 namespace Clases
 {
 
-    
-
     public class Contacto : List<Contacto>
     {
        
@@ -25,23 +23,6 @@ namespace Clases
             return this.nombre + " apellido: " + this.apellido +" Telefono: " +this.telefono+ "  Edad:  " + this.edad;
 
         }
-
-
-       /* public Contacto(string nombre, string apellido, string telefono, string edad)
-        {
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.telefono = telefono;
-            this.edad = edad;
-        }
-       */
-        // array.select 
-
-        //file.writeline
-
-        //private List<contacto> contacto
-
-        // contacto.select(c => $"{c.nombre},{c.apellido},{c.edad},{c.telefono},{}")
     }
 
 
@@ -55,14 +36,8 @@ namespace Clases
         
         public class Agenda
         {
-
-            
-
             public static  void AgregaContacto()
             {
-
-              //  List<Contacto> persona = new List<Contacto>();
-
 
                 Console.WriteLine("Ingrese Nombre: ");
                 string nombre = Console.ReadLine();
@@ -93,22 +68,13 @@ namespace Clases
 
                 persona.Add(new Contacto() { nombre = nombre, apellido = apellido, telefono = telefono, edad = edad });
 
-               // int largo = persona.Count;
-
-                
 
                 using(StreamWriter sw = File.AppendText(path))
-                {
-                    //sw.WriteLine();
-                    sw.WriteLine(nombre+","+apellido+","+telefono+","+edad);
-                    
+                {              
+                    sw.WriteLine(nombre+","+apellido+","+telefono+","+edad);                   
                 }
 
                 Console.WriteLine("Contacto Agregado");
-                // Console.Read();
-              //  return;
-
-               // MostrarAgenda();
 
             }
 
@@ -173,32 +139,26 @@ namespace Clases
 
                 persona.RemoveRange(0,persona.Count);
                 
-                // This text is added only once to the file.
                 if (!File.Exists(path))
                 {
                     Console.WriteLine("No existe Archivo ---   Creando Archivo");
-                    // File.Create(path);
 
                     using (StreamWriter sw = new StreamWriter(path, true))
                     {
-                        //write to the file
+                      
                     }
                     if (File.Exists(path))
                         {
                             Console.WriteLine("Archivo Creado");
                         }
                     System.Threading.Thread.Sleep(2000);
-                    
-
                 }
-
                
                 string[] readText = File.ReadAllLines(path);
                 
                 foreach (string s in readText  )
                 {
-                  
-                  
+                                    
                     string[] items = s.Split(',');
                    
                         string nom = items[0];
@@ -206,13 +166,9 @@ namespace Clases
                         string tel = items[2];
                         int eda = int.Parse(items[3]);
                    
-                   
-
                     persona.Add(new Contacto() { nombre = nom, apellido = ape, telefono = tel, edad = eda });
                    
                 }
-
-                
 
                 indexx = 0;
                 for (int j=0; j< persona.Count; j++)
@@ -224,8 +180,6 @@ namespace Clases
                     // Console.WriteLine("----------------------------------------------------------");
                     indexx ++;
                 }
-
-
 
             }
 
@@ -278,9 +232,8 @@ namespace Clases
 
             public static void BuscaxApellido(string Busqueda)
             {
-              //  Console.WriteLine(Busqueda);
+            
                 Console.WriteLine("por Apellido {0}",Busqueda);
-                //Console.Read();
 
                 List<Contacto> resultFindAll = persona.FindAll(
                     delegate (Contacto current)
@@ -296,18 +249,14 @@ namespace Clases
                     Console.WriteLine("-------------------------------------------------------------------");
                     Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j + 1, resultFindAll[j].nombre, resultFindAll[j].apellido, resultFindAll[j].telefono, resultFindAll[j].edad); ;
 
-
                 }
-
 
             }
 
 
             public static void BuscaxNombre(string Busqueda)
             {
-              //  Console.WriteLine(Busqueda);
                 Console.WriteLine("por Nombre {0}",Busqueda);
-                //Console.Read();
 
                 List<Contacto> resultFindAll = persona.FindAll(
                     delegate(Contacto current) 
@@ -322,13 +271,8 @@ namespace Clases
                     
                     Console.WriteLine("-------------------------------------------------------------------");
                     Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j + 1, resultFindAll[j].nombre, resultFindAll[j].apellido, resultFindAll[j].telefono, resultFindAll[j].edad); ;
-                   
-                    
+
                 }
-
-
-
-
 
             }
 
@@ -363,27 +307,6 @@ namespace Clases
 
                         break;
                 }
-
-              /*  if (selec == 1 || selec ==2)
-                {
-                    if (selec == 1)
-                    {
-                        // busca por apellido
-
-
-
-                    }
-                    else
-                    {
-                        // busca por nombre
-
-
-
-                    }
-                }*/
-
-
-
             }
 
             public static void Menu()
@@ -426,7 +349,6 @@ namespace Clases
                         EliminaContacto();
                         MostrarAgenda();
                         Menu();
-                       // Console.WriteLine("Case 4");
                         break;
                     case 5:
                         Buscar();
@@ -437,9 +359,6 @@ namespace Clases
                         Menu();
                         break;
                 }
-
-
-
             }
         }
 
@@ -448,8 +367,7 @@ namespace Clases
             
             Agenda.MostrarAgenda();
             Agenda.Menu();
-            
-            
+
         }
     }
 }
