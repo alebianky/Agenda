@@ -220,8 +220,9 @@ namespace Clases
             {
                 Console.WriteLine("por Apellido {0}",Busqueda);
 
-                // List<Contacto> resultFindAll = persona.FindAll( current => current.Contains(Busqueda) /*current.apellido.ToLower() == Busqueda.ToLower()*/ );
-                List<Contacto> resultFindAll = persona.FindAll(current => current.apellido.ToLower() == Busqueda.ToLower() );
+                 List<Contacto> resultFindAll = persona.FindAll( current => current.apellido.ToLower().Contains(Busqueda.ToLower())  );
+
+                //List<Contacto> resultFindAll = persona.FindAll(current => current.apellido.ToLower() == Busqueda.ToLower() );
                 int j = 1;
                 resultFindAll.ForEach(current =>
                        {
@@ -235,8 +236,8 @@ namespace Clases
             public static void BuscaxNombre(string Busqueda)
             {
                 Console.WriteLine("por Nombre {0}",Busqueda);
-
-                List<Contacto> resultFindAll = persona.FindAll(current => current.nombre.ToLower() == Busqueda.ToLower());
+                List<Contacto> resultFindAll = persona.FindAll(current => current.nombre.ToLower().Contains(Busqueda.ToLower()));
+              //  List<Contacto> resultFindAll = persona.FindAll(current => current.nombre.ToLower() == Busqueda.ToLower());
                 int j = 1;
 
                 resultFindAll.ForEach(current =>
