@@ -95,24 +95,17 @@ namespace Clases
                         Console.WriteLine("Contacto Eliminado:  {0}  {1} ", persona[pEliminar - 1].nombre.ToUpper(), persona[pEliminar - 1].apellido.ToUpper());
                         Console.ForegroundColor = ConsoleColor.White;
                         persona.RemoveAt(pEliminar - 1);
-                   
-
                         GrabaArchivo();
-
                     }
                     else
                     {
                         Console.WriteLine("el numero ingresado es incorrecto --   Ingrese Nuevamente");
                     }
-
-
                 }
                 else
                 {
                     Console.WriteLine("No existe Ningun Contacto para eliminar!");
                 }
-
-
             }
 
 
@@ -124,8 +117,6 @@ namespace Clases
                 {
                     foreach (var item in persona)
                     {
-
-                      
                         sw.WriteLine(item.nombre+","+item.apellido+","+item.telefono+","+item.edad);
                     }           
                 }             
@@ -159,25 +150,20 @@ namespace Clases
                 foreach (string s in readText  )
                 {
                                     
-                    string[] items = s.Split(',');
-                   
+                    string[] items = s.Split(',');                  
                         string nom = items[0];
                         string ape = items[1];
                         string tel = items[2];
                         int eda = int.Parse(items[3]);
                    
-                    persona.Add(new Contacto() { nombre = nom, apellido = ape, telefono = tel, edad = eda });
-                   
+                    persona.Add(new Contacto() { nombre = nom, apellido = ape, telefono = tel, edad = eda });         
                 }
 
                 indexx = 0;
                 for (int j=0; j< persona.Count; j++)
                 {
-                    
-                    //int index = j + 1;
                     Console.WriteLine("-------------------------------------------------------------------");
-                    Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}",j+1 , persona[j].nombre , persona[j].apellido , persona[j].telefono, persona[j].edad); ;
-                    // Console.WriteLine("----------------------------------------------------------");
+                    Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}",j+1 , persona[j].nombre , persona[j].apellido , persona[j].telefono, persona[j].edad); ;    
                     indexx ++;
                 }
 
@@ -232,35 +218,17 @@ namespace Clases
 
             public static void BuscaxApellido(string Busqueda)
             {
-            
                 Console.WriteLine("por Apellido {0}",Busqueda);
 
-                List<Contacto> resultFindAll = persona.FindAll( current => current.apellido.ToLower() == Busqueda.ToLower() 
-                /*    delegate (Contacto current)
-                    {
-                        return current.apellido.ToLower() == Busqueda.ToLower();
-                    }*/
-                );
+                // List<Contacto> resultFindAll = persona.FindAll( current => current.Contains(Busqueda) /*current.apellido.ToLower() == Busqueda.ToLower()*/ );
+                List<Contacto> resultFindAll = persona.FindAll(current => current.apellido.ToLower() == Busqueda.ToLower() );
                 int j = 1;
                 resultFindAll.ForEach(current =>
-               {
-                   Console.WriteLine("-------------------------------------------------------------------");
-                   Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j++, current.nombre, current.apellido, current.telefono, current.edad);
-               }
+                       {
+                           Console.WriteLine("-------------------------------------------------------------------");
+                           Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j++, current.nombre, current.apellido, current.telefono, current.edad);
+                       }
                 );
-
-
-
-
-               /* for (int j = 0; j < resultFindAll.Count; j++)
-                {
-
-
-                    Console.WriteLine("-------------------------------------------------------------------");
-                    Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j + 1, resultFindAll[j].nombre, resultFindAll[j].apellido, resultFindAll[j].telefono, resultFindAll[j].edad); ;
-
-                }*/
-
             }
 
 
@@ -272,26 +240,11 @@ namespace Clases
                 int j = 1;
 
                 resultFindAll.ForEach(current =>
-                {
-                    Console.WriteLine("-------------------------------------------------------------------");
-                    Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j++, current.nombre, current.apellido, current.telefono, current.edad);
-                });
-               
-                   /* delegate(Contacto current) 
-                    {
-                        return current.nombre.ToLower() == Busqueda.ToLower();
-                    }*/
-                
-
-              /*  for (int j = 0; j < resultFindAll.Count; j++)
-                {
-
-                    
-                    Console.WriteLine("-------------------------------------------------------------------");
-                    Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j + 1, resultFindAll[j].nombre, resultFindAll[j].apellido, resultFindAll[j].telefono, resultFindAll[j].edad); ;
-
-                }*/
-
+                        {
+                            Console.WriteLine("-------------------------------------------------------------------");
+                            Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j++, current.nombre, current.apellido, current.telefono, current.edad);
+                        }
+                );
             }
 
 
