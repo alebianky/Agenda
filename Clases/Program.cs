@@ -235,21 +235,31 @@ namespace Clases
             
                 Console.WriteLine("por Apellido {0}",Busqueda);
 
-                List<Contacto> resultFindAll = persona.FindAll(
-                    delegate (Contacto current)
+                List<Contacto> resultFindAll = persona.FindAll( current => current.apellido.ToLower() == Busqueda.ToLower() 
+                /*    delegate (Contacto current)
                     {
                         return current.apellido.ToLower() == Busqueda.ToLower();
-                    }
+                    }*/
+                );
+                int j = 1;
+                resultFindAll.ForEach(current =>
+               {
+                   Console.WriteLine("-------------------------------------------------------------------");
+                   Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j++, current.nombre, current.apellido, current.telefono, current.edad);
+               }
                 );
 
-                for (int j = 0; j < resultFindAll.Count; j++)
+
+
+
+               /* for (int j = 0; j < resultFindAll.Count; j++)
                 {
 
 
                     Console.WriteLine("-------------------------------------------------------------------");
                     Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j + 1, resultFindAll[j].nombre, resultFindAll[j].apellido, resultFindAll[j].telefono, resultFindAll[j].edad); ;
 
-                }
+                }*/
 
             }
 
@@ -258,21 +268,29 @@ namespace Clases
             {
                 Console.WriteLine("por Nombre {0}",Busqueda);
 
-                List<Contacto> resultFindAll = persona.FindAll(
-                    delegate(Contacto current) 
+                List<Contacto> resultFindAll = persona.FindAll(current => current.nombre.ToLower() == Busqueda.ToLower());
+                int j = 1;
+
+                resultFindAll.ForEach(current =>
+                {
+                    Console.WriteLine("-------------------------------------------------------------------");
+                    Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j++, current.nombre, current.apellido, current.telefono, current.edad);
+                });
+               
+                   /* delegate(Contacto current) 
                     {
                         return current.nombre.ToLower() == Busqueda.ToLower();
-                    }
-                );
+                    }*/
+                
 
-                for (int j = 0; j < resultFindAll.Count; j++)
+              /*  for (int j = 0; j < resultFindAll.Count; j++)
                 {
 
                     
                     Console.WriteLine("-------------------------------------------------------------------");
                     Console.WriteLine("{0}. {1,-20}  {2,-20} {3,-15} {4}", j + 1, resultFindAll[j].nombre, resultFindAll[j].apellido, resultFindAll[j].telefono, resultFindAll[j].edad); ;
 
-                }
+                }*/
 
             }
 
